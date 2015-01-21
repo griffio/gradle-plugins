@@ -47,4 +47,5 @@ class QuerydslPluginExtensionTest {
     assertThat(extension.library,
         equalTo(defaultLibrary));
   }
+
 }

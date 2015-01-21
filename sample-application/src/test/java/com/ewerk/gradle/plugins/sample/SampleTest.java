@@ -24,6 +24,7 @@ public class SampleTest {
 
   @Test
   public void testConstruct() {
+
     Sample sample = new Sample();
     Bean bean = sample.construct();
     assertThat(bean.hello()).isEqualTo("This is just a String!");

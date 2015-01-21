@@ -27,7 +27,6 @@ import org.slf4j.LoggerFactory;
  */
 public final class Sample {
   private static final Logger LOG = LoggerFactory.getLogger(Sample.class);
-
   public Bean construct() {
     Bean bean = Bean.build("This is just a String!", 10);
     LOG.info("Hello: {}", bean);

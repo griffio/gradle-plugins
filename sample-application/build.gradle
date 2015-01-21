@@ -1,12 +1,23 @@
+buildscript {
+  repositories {
+    mavenLocal()
+  }
+
+  dependencies {
+    classpath "com.ewerk.gradle.plugins:querydsl-plugin:1.0.7-SNAPSHOT"
+  }
+
+}
+
 plugins {
   id "java"
   id "com.ewerk.gradle.plugins.auto-value" version "1.0.1"
   id "com.ewerk.gradle.plugins.integration-test" version "1.0.6"
-  id "com.ewerk.gradle.plugins.querydsl" version "1.0.2"
 }
 
+apply plugin: "com.ewerk.gradle.plugins.querydsl"
+
 repositories {
-  mavenLocal()
   mavenCentral()
 }
 
@@ -23,12 +34,12 @@ compileJava.dependsOn(":auto-value-plugin:publishToMavenLocal")
 compileJava.dependsOn(":integration-test-plugin:publishToMavenLocal")
 compileJava.dependsOn(":querydsl-plugin:publishToMavenLocal")
 
+autoValue {
+  autoValueSourcesDir = "src/auto-value/java"
+}
+
 querydsl {
   jpa = true
-  jdo = false
-  hibernate = false
-  morphia = false
-  roo = false
   springDataMongo = true
   querydslDefault = false
 }

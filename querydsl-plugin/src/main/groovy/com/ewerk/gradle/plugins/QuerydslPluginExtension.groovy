@@ -8,20 +8,36 @@ package com.ewerk.gradle.plugins
  */
 class QuerydslPluginExtension {
 
-  static final String NAME = "querydsl"
+    static final String NAME = "querydsl"
 
-  static final String DEFAULT_QUERYDSL_SOURCES_DIR = new File("src/querydsl/java")
-  static final String DEFAULT_LIBRARY = "com.mysema.querydsl:querydsl-apt:3.6.0"
+    static final String DEFAULT_QUERYDSL_SOURCES_DIR = new File("src/querydsl/java")
+    static final String DEFAULT_LIBRARY = "com.mysema.querydsl:querydsl-apt:3.6.0"
 
-  String querydslSourcesDir = DEFAULT_QUERYDSL_SOURCES_DIR
-  String library = DEFAULT_LIBRARY
+    String querydslSourcesDir = DEFAULT_QUERYDSL_SOURCES_DIR
+    String library = DEFAULT_LIBRARY
 
-  boolean jpa = false;
-  boolean jdo = false;
-  boolean hibernate = false;
-  boolean morphia = false;
-  boolean roo = false;
-  boolean springDataMongo = false;
-  boolean querydslDefault = false;
+    Set<String> activeProcessorClassNames = [] as Set
+
+    private boolean jpa;
+    private boolean querydslDefault;
+    private boolean springDataMongo;
+
+    void setQuerydslDefault(boolean enabled) {
+        if (enabled) {
+            activeProcessorClassNames.add(QuerydslProcessorEnum.QUERYDSL.processorClassName())
+        }
+    }
+
+    void setJpa(boolean enabled) {
+        if (enabled) {
+            activeProcessorClassNames.add(QuerydslProcessorEnum.JPA.processorClassName())
+        }
+    }
+
+    void setSpringDataMongo(boolean enabled) {
+        if (enabled) {
+            activeProcessorClassNames.add(QuerydslProcessorEnum.MONGO.processorClassName())
+        }
+    }
 
 }

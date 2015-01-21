@@ -24,13 +24,9 @@ class QuerydslPluginTest {
     project = ProjectBuilder.builder().build()
     project.plugins.apply(QuerydslPlugin.class)
 
-    project.extensions.querydsl.jpa = true;
-    project.extensions.querydsl.jdo = true;
-    project.extensions.querydsl.roo = true;
-    project.extensions.querydsl.hibernate = true;
-    project.extensions.querydsl.morphia = true;
-    project.extensions.querydsl.springDataMongo = true;
-    project.extensions.querydsl.querydslDefault = true;
+    project.extensions.querydsl.jpa = true
+    project.extensions.querydsl.springDataMongo = true
+    project.extensions.querydsl.querydslDefault = true
   }
 
   @Test
@@ -79,12 +75,6 @@ class QuerydslPluginTest {
 
     assertThat(id, equalTo(QuerydslPluginExtension.DEFAULT_LIBRARY));
 
-    assertThat(project.tasks.compileQuerydslJpa, notNullValue())
-    assertThat(project.tasks.compileQuerydslJdo, notNullValue())
-    assertThat(project.tasks.compileQuerydslHibernate, notNullValue())
-    assertThat(project.tasks.compileQuerydslRoo, notNullValue())
-    assertThat(project.tasks.compileQuerydslMorphia, notNullValue())
-    assertThat(project.tasks.compileQuerydslSpringDataMongo, notNullValue())
-    assertThat(project.tasks.compileQuerydslDefault, notNullValue())
+    assertThat(project.tasks.queryDslAnnotationProcessing, notNullValue())
   }
 }

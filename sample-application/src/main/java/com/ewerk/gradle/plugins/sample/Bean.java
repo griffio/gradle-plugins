@@ -26,11 +26,11 @@ import com.google.auto.value.AutoValue;
  */
 @AutoValue
 public abstract class Bean {
-  abstract String hello();
+    abstract String hello();
 
-  abstract int count();
+    abstract int count();
 
-  static Bean build(final String hello, final int count) {
-    return new AutoValue_Bean(hello, count);
-  }
+    static Bean build(final String hello, final int count) {
+        return new AutoValue_Bean(hello, count);
+    }
 }

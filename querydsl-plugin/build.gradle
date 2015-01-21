@@ -9,6 +9,13 @@ plugins {
   id "nu.studer.plugindev" version "1.0.3"
 }
 
+configurations.all {
+  resolutionStrategy {
+    cacheDynamicVersionsFor 0, 'seconds'
+    cacheChangingModulesFor 0, 'seconds'
+  }
+}
+
 apply plugin: "release"
 
 plugindev {
@@ -54,4 +61,3 @@ release {
   requireBranch = "release"
 }
 
-createReleaseTag.dependsOn("check")
